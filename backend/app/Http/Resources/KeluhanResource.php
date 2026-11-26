@@ -23,6 +23,11 @@ class KeluhanResource extends JsonResource
             'hasil_analisis'  => $this->hasil_analisis,
             'status'          => strtolower((string) $this->status),
             'tanggal'         => optional($this->tanggal)->toIso8601String(),
+            'petani'          => $this->whenLoaded('petani', fn () => [
+                'id'    => $this->petani->id_petani,
+                'nama'  => $this->petani->nama,
+                'email' => $this->petani->email,
+            ]),
         ];
     }
 
