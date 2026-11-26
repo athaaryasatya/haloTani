@@ -65,7 +65,12 @@ class KeluhanController extends Controller
               . "Urgensi: {$data['tingkat_urgensi']}\n"
               . "Keluhan: {$data['deskripsi']}";
 
-        $hasilAi = KiraAIService::generateSolusi($data['deskripsi'], $data['lokasi_lahan']);
+        $hasilAi = KiraAIService::generateSolusi(
+            $data['deskripsi'],
+            $data['lokasi_lahan'],
+            $data['jenis_tanaman'],
+            $data['tingkat_urgensi'],
+        );
 
         $keluhan = $request->user()->keluhan()->create([
             'id_keluhan'      => (string) Str::uuid(),
