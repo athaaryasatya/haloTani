@@ -10,6 +10,7 @@ import Dashboard from './pages/Dashboard.jsx';
 import KirimKeluhan from './pages/KirimKeluhan.jsx';
 import RiwayatAnalisis from './pages/RiwayatAnalisis.jsx';
 import Profil from './pages/Profil.jsx';
+import TemplatePrompt from './pages/admin/TemplatePrompt.jsx';
 
 function Splash() {
   return (
@@ -33,6 +34,12 @@ function Guest({ children }) {
   return user ? <Navigate to="/" replace /> : children;
 }
 
+// untuk admin saja
+function AdminOnly({ children }) {
+  const { user } = useAuth();
+  return user?.role === 'admin' ? children : <Navigate to="/" replace />;
+}
+
 export default function App() {
   return (
     <Routes>
@@ -46,6 +53,7 @@ export default function App() {
         <Route path="keluhan/baru" element={<KirimKeluhan />} />
         <Route path="riwayat" element={<RiwayatAnalisis />} />
         <Route path="profil" element={<Profil />} />
+        <Route path="admin/template-prompt" element={<AdminOnly><TemplatePrompt /></AdminOnly>} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />

@@ -9,9 +9,14 @@ const menu = [
   { to: '/riwayat', label: 'Riwayat Analisis', icon: ClockIcon },
 ];
 
+const adminMenu = [
+  { to: '/admin/template-prompt', label: 'Template Prompt AI', icon: DocPlusIcon },
+];
+
 export default function Layout() {
   const { user, logout } = useAuth();
   const [open, setOpen] = useState(false);
+  const isAdmin = user?.role === 'admin';
 
   return (
     <div className="min-h-screen">
@@ -38,7 +43,7 @@ export default function Layout() {
         </div>
 
         <nav className="flex-1 space-y-1 px-3 py-2">
-          {menu.map(({ to, label, icon: Icon, end }) => (
+          {(isAdmin ? adminMenu : menu).map(({ to, label, icon: Icon, end }) => (
             <NavLink
               key={to}
               to={to}
@@ -67,7 +72,7 @@ export default function Layout() {
             </span>
             <span className="min-w-0 leading-tight">
               <span className="block truncate text-[0.8rem] font-semibold">{user?.nama}</span>
-              <span className="block text-xs text-gray-500">Petani</span>
+              <span className="block text-xs text-gray-500">{isAdmin ? 'Admin' : 'Petani'}</span>
             </span>
           </Link>
           <button
