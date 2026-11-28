@@ -73,4 +73,10 @@ export const api = {
   listKeluhan: (status = 'semua') => request('GET', `/keluhan?status=${encodeURIComponent(status)}`).then((r) => r.data),
   getKeluhan: (id) => request('GET', `/keluhan/${id}`).then((r) => r.data),
   createKeluhan: (payload) => request('POST', '/keluhan', payload).then((r) => r.data),
+
+
+  // admin: template prompt
+  getTemplatePrompt: () => request('GET', '/admin/template-prompt').then((r) => r.data),
+  updateTemplatePrompt: (payload) => request('PUT', '/admin/template-prompt', payload),
+  testTemplatePrompt: (payload) => request('POST', '/admin/template-prompt/test', payload).then((r) => r.data),
 };
