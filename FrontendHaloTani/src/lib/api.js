@@ -79,4 +79,10 @@ export const api = {
   getTemplatePrompt: () => request('GET', '/admin/template-prompt').then((r) => r.data),
   updateTemplatePrompt: (payload) => request('PUT', '/admin/template-prompt', payload),
   testTemplatePrompt: (payload) => request('POST', '/admin/template-prompt/test', payload).then((r) => r.data),
+
+
+  // admin: laporan bulanan
+  listLaporan: () => request('GET', '/admin/laporan').then((r) => r.data),
+  saveLaporan: (payload) => request('POST', '/admin/laporan', payload),
+  deleteLaporan: (id) => request('DELETE', `/admin/laporan/${id}`),
 };
