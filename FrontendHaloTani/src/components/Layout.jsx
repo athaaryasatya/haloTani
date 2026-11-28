@@ -11,6 +11,7 @@ const menu = [
 
 const adminMenu = [
   { to: '/admin/template-prompt', label: 'Template Prompt AI', icon: DocPlusIcon },
+  { to: '/admin/laporan', label: 'Laporan Bulanan', icon: ClockIcon },
 ];
 
 export default function Layout() {

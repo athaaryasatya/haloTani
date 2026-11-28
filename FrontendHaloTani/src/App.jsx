@@ -11,6 +11,8 @@ import KirimKeluhan from './pages/KirimKeluhan.jsx';
 import RiwayatAnalisis from './pages/RiwayatAnalisis.jsx';
 import Profil from './pages/Profil.jsx';
 import TemplatePrompt from './pages/admin/TemplatePrompt.jsx';
+import LaporanBulanan from './pages/admin/LaporanBulanan.jsx';
+
 
 function Splash() {
   return (
@@ -54,6 +56,7 @@ export default function App() {
         <Route path="riwayat" element={<RiwayatAnalisis />} />
         <Route path="profil" element={<Profil />} />
         <Route path="admin/template-prompt" element={<AdminOnly><TemplatePrompt /></AdminOnly>} />
+        <Route path="admin/laporan" element={<AdminOnly><LaporanBulanan /></AdminOnly>} />
       </Route>
 
       <Route path="*" element={<Navigate to="/" replace />} />
